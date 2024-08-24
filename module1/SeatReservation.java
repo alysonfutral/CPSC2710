@@ -15,7 +15,13 @@ public class SeatReservation {
     }
 
     public void setFlightDesignator(String fd) {
-        this.flightDesignator = fd;
+        //this.flightDesignator = fd;
+        
+        if (flightDesignator == null){
+            throw new IllegalArgumentException("flight designator cannot be null");
+        }
+
+        this.flightDesignator = flightDesignator;
     }
 
     // return using .toString()
