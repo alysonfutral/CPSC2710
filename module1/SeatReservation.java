@@ -1,6 +1,4 @@
 
-//open folder not java project redo git init/ branches etc
-
 import java.time.LocalDate;
 
 public class SeatReservation {
@@ -15,7 +13,12 @@ public class SeatReservation {
     }
 
     public void setFlightDesignator(String fd) {
+        if (fd.length() < 4 || fd.length() > 6) {
+                throw new IllegalArgumentException("The flightDesignator's length should be between 4 and 6 characters.");
+        }
+
         this.flightDesignator = fd;
+
     }
 
     // return using .toString()
