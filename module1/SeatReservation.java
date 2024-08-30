@@ -17,11 +17,17 @@ public class SeatReservation {
     public void setFlightDesignator(String fd) {
         //this.flightDesignator = fd;
         
-        if (flightDesignator == null){
+        if (fd == null){
             throw new IllegalArgumentException("flight designator cannot be null");
         }
 
-        this.flightDesignator = flightDesignator;
+        if (fd.length() < 4 || fd.length() > 6) {
+            throw new IllegalArgumentException("flight designator cannot be less than 4 or more than 6");
+
+        }
+
+
+        this.flightDesignator = fd;
     }
 
     // return using .toString()
@@ -60,7 +66,8 @@ public class SeatReservation {
         (flightDesignator == null ? "null" : flightDesignator) +
         ",flightDate=" + (flightDate == null ? "null" : flightDate.toString()) +
         ",firstName=" + (firstName == null ? "null" : firstName) +
-        ",lastName=" + (lastName == null ? "null" : lastName);
+        ",lastName=" + (lastName == null ? "null" : lastName)
+        + "}";
 
     }
 
