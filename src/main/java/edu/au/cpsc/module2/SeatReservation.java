@@ -6,6 +6,8 @@ public class SeatReservation {
     private java.time.LocalDate flightDate;
     private String firstName;
     private String lastName;
+    private int numberOfBags;
+    private boolean flyingWithInfant;
 
     public String getFlightDesignator() {
         return flightDesignator;
@@ -50,19 +52,35 @@ public class SeatReservation {
         this.lastName = ln;
     }
 
+    public int getNumberOfBags() {
+        return numberOfBags;
+    }
+
+    public void setNumberOfBags(int nb) {
+        this.numberOfBags = nb;
+    }
+
+    public boolean isFlyingWithInfant() {
+        return flyingWithInfant;
+    }
+
+    public void makeFlyingWithInfant() {
+        this.flyingWithInfant = true;
+    }
+
+    public void makeNotFlyingWithInfant() {
+        this.flyingWithInfant = false;
+    }
+
     public String toString() {
-        /*return a string representing this object using 
-        *"null" for all instance variables that are null.
-        *
-        * ternary operator for null checks
-        */
 
         return "SeatReservation{flightDesignator=" + 
            (flightDesignator == null ? "null" : flightDesignator) +
            ",flightDate=" + (flightDate == null ? "null" : flightDate.toString()) +
            ",firstName=" + (firstName == null ? "null" : firstName) +
-           ",lastName=" + (lastName == null ? "null" : lastName) + 
-           "}";
+           ",lastName=" + (lastName == null ? "null" : lastName) +
+           ", numberOfBags=" + numberOfBags + ", flyingWithInfant=" +
+           flyingWithInfant + "}";
 
     }
 
