@@ -1,3 +1,6 @@
+package edu.au.cpsc.module2; // Ensure both classes have this package declaration
+
+
 import java.time.LocalDate;
 
 public class SeatReservation {
@@ -64,7 +67,7 @@ public class SeatReservation {
         return flyingWithInfant;
     }
 
-    public void makeFlyingWithInfant() {
+    public void makeFlyingWithInfant(boolean flyingWithInfant) {
         this.flyingWithInfant = true;
     }
 
