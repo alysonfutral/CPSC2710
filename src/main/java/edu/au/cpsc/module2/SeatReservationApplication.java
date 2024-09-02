@@ -1,3 +1,13 @@
+/**
+ * Module 2 Assignment
+ * CPSC 2710 - Software Construction
+ * Alyson Futral
+ * This project produces a Scene (window) that provides users to
+ * interact with a program that acts as an airplane ticket purchase.
+ *
+ */
+
+
 package edu.au.cpsc.module2;
 
 import javafx.application.Application;
