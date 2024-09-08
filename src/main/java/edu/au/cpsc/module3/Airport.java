@@ -135,8 +135,31 @@ public class Airport {
         // skip the first line in CSV (headers)
         bufferedReader.readLine();
 
+        // check if values are in row, if so continue
+        String checkRow;
+        while ((checkRow = bufferedReader.readLine()) != null) {
+            String[] row = checkRow.split(",");
+            if (row.length < 11) {
+                continue;
+            }
 
-
+            // populate the airport object
+            Airport airportField = new Airport();
+            airportField.setIdent(row[0]);
+            airportField.setType(row[1]);
+            airportField.setName(row[2]);
+            // check if slot is null
+            airportField.setElevationFt(row[3].isEmpty() ? null :Integer.parseInt(row[3]));
+            airportField.setContinent(row[4]);
+            airportField.setIsoCountry(row[5]);
+            airportField.setIsoRegion(row[6]);
+            airportField.setMunicipality(row[7]);
+            airportField.setGpsCode(row[8]);
+            airportField.setIataCode(row[9]);
+            airportField.setLocalCode(row[10]);
+            airportField.setCoordinates(Float.parseFloat(row[11]));
+            airportsFile.add(airportField);
+        }
 
         return airportsFile;
     }
