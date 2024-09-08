@@ -1,8 +1,7 @@
 package edu.au.cpsc.module3;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,15 +118,37 @@ public class Airport {
     }
 
     public static List<Airport> readAll() throws IOException {
+        List<Airport> airportsFile = new ArrayList<Airport>();
 
-        BufferedReader read = new BufferedReader(new FileReader("src/resources/airport-codes.csv"));
+        // URL holds the location for csv, getResource() looks for the resource in the class path
+        URL resrc = Airport.class.getClassLoader().getResource("airport-codes.csv");
+        // make sure the file is read, if not throw exception
+        if (resrc != null) {
+            throw new IOException("File not found");
+        }
 
-        List<Airport> airportsNames = new ArrayList<Airport>();
+        // openStream() calls URL object to allow the data to be read from the csv
+        // inputStreamReader() translates the bytes into a readable output
+        InputStream streamCSV = resrc.openStream();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(streamCSV));
+
+        // skip the first line in CSV (headers)
+        bufferedReader.readLine();
 
 
-        return airportsNames;
+
+
+        return airportsFile;
     }
 
 
 
 }
+
+
+/*
+Resources:
+https://stackoverflow.com/questions/12055905/java-getresource-fails-on-csv-files
+https://mkyong.com/java/java-read-a-file-from-resources-folder/
+https://docs.oracle.com/javase/8/docs/api/java/lang/ClassLoader.html#getResource-java.lang.String-
+ */
