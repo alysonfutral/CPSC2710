@@ -121,7 +121,7 @@ public class Airport {
         List<Airport> airportsFile = new ArrayList<Airport>();
 
         // URL holds the location for csv, getResource() looks for the resource in the class path
-        URL resrc = Airport.class.getClassLoader().getResource("airport-codes.csv");
+        URL resrc = Airport.class.getClassLoader().getResource("/Users/alyson/CPSC2710/CPSC2710/module3/src/main/resources/AirportLayout.fxml");
         // make sure the file is read, if not throw exception
         if (resrc != null) {
             throw new IOException("File not found");
@@ -148,7 +148,7 @@ public class Airport {
             airportField.setIdent(row[0]);
             airportField.setType(row[1]);
             airportField.setName(row[2]);
-            // check if slot is null
+            // check if slot is null since some values are missing
             airportField.setElevationFt(row[3].isEmpty() ? null :Integer.parseInt(row[3]));
             airportField.setContinent(row[4]);
             airportField.setIsoCountry(row[5]);
