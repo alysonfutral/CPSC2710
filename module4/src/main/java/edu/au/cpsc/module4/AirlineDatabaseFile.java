@@ -4,7 +4,7 @@ import java.io.*;
 
 public class AirlineDatabaseFile {
 
-    public static final File database = new File("Airline-view.fxml");
+    public static final File database = new File("Airline-view.dat");
 
     private static AirlineDatabase airLineDatabase = null;
 
@@ -26,7 +26,7 @@ public class AirlineDatabaseFile {
         }
     }
 
-    private static void saveDatabase() {
+    protected static void saveDatabase() {
         try (OutputStream os = new FileOutputStream(database)) {
             AirlineDatabaseIO.save(getDatabase(), os);
         }

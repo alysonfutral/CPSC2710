@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -32,10 +33,17 @@
          <ToggleButton fx:id="M" mnemonicParsing="false" text="M" />
          <ToggleButton fx:id="T" mnemonicParsing="false" text="T" />
          <ToggleButton fx:id="W" mnemonicParsing="false" text="W" />
-         <ToggleButton fx:id="R" mnemonicParsing="false" prefWidth="25.0" text="R" />
+         <ToggleButton fx:id="R" mnemonicParsing="false" text="R" />
          <ToggleButton fx:id="F" mnemonicParsing="false" text="F" />
          <ToggleButton fx:id="S" mnemonicParsing="false" text="S" />
          <ToggleButton fx:id="U" mnemonicParsing="false" text="U" />
+         <VBox prefHeight="73.0" prefWidth="355.0">
+            <children>
+               <Button mnemonicParsing="false" onAction="#handleUpdateFlight" text="Update" />
+               <Button mnemonicParsing="false" onAction="#handleNewFlight" text="New" />
+               <Button mnemonicParsing="false" onAction="#handleDeleteFlight" text="Delete" />
+            </children>
+         </VBox>
       </children>
    </HBox>
 </VBox>

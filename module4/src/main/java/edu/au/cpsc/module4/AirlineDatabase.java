@@ -24,8 +24,15 @@ public class AirlineDatabase implements Serializable {
     }
 
     public void updateScheduledFlight(ScheduledFlight sf) {
+        for (int i = 0; i < flights.size(); i++) {
+            if (flights.get(i).getFlightDesignator().equals(sf.getFlightDesignator())) {
+                flights.set(i, sf); // Replace the old flight with the updated one
+                break;
+            }
+        }
 
     }
 }
+
 
 

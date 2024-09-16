@@ -59,29 +59,31 @@ public class AirlineController {
     @FXML
     private ToggleButton U;
 
+    private AirlineDatabase database;
 
     public void initialize() {
-        flightDesignatorColumn.setCellValueFactory(new PropertyValueFactory<ScheduledFlight,String>("flightDesignator"));
-        departureAirportColumn.setCellValueFactory(new PropertyValueFactory<ScheduledFlight,String>("departureAirportIdent"));
-        arrivalAirportColumn.setCellValueFactory(new PropertyValueFactory<ScheduledFlight,String>("arrivalAirportIdent"));
-        daysOfWeekColumn.setCellValueFactory(new PropertyValueFactory<ScheduledFlight,String>("daysOfWeek"));
+        // Load the database instead of creating a new one
+        database = AirlineDatabaseFile.getDatabase();
 
-        //airlineTable.getSelectionModel().selectedItemProperty().addListener(c -> tableSelectionChanged());
+        flightDesignatorColumn.setCellValueFactory(new PropertyValueFactory<>("flightDesignator"));
+        departureAirportColumn.setCellValueFactory(new PropertyValueFactory<>("departureAirportIdent"));
+        arrivalAirportColumn.setCellValueFactory(new PropertyValueFactory<>("arrivalAirportIdent"));
+        daysOfWeekColumn.setCellValueFactory(new PropertyValueFactory<>("daysOfWeek"));
+
+        // Load flights into the table
+        refreshFlightTable(); // Updated to reflect loaded data
+
+        airlineTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            showFlightDesignator(newValue);
+        });
     }
 
-    public void showFlightDesignatorTable(List<ScheduledFlight> flight) {
-        SortedList<ScheduledFlight> sortedList = new SortedList<>(FXCollections.observableList(flight));
+    public void showFlightDesignatorTable(List<ScheduledFlight> flightList) {
+        ObservableList<ScheduledFlight> observableList = FXCollections.observableList(flightList);
+        SortedList<ScheduledFlight> sortedList = new SortedList<>(observableList);
         airlineTable.setItems(sortedList);
         sortedList.comparatorProperty().bind(airlineTable.comparatorProperty());
-        airlineTable.refresh();
     }
-
-
-
-
-
-
-
 
     public void showFlightDesignator(ScheduledFlight fd) {
         if (fd == null) {
@@ -99,9 +101,92 @@ public class AirlineController {
         fd.setFlightDesignator(flightDesignator.getText());
         fd.setDepartureAirportIdent(departureAirportIdent.getText());
         fd.setArrivalAirportIdent(arrivalAirportIdent.getText());
+
+
     }
 
+    @FXML
+    public void handleNewFlight(ActionEvent event) {
+        // Get user input from TextFields
+        String flightDesignatorInput = flightDesignator.getText();
+        String departureAirportIdentInput = departureAirportIdent.getText();
+        String arrivalAirportIdentInput = arrivalAirportIdent.getText();
 
 
+        LocalTime departureTimeInput = LocalTime.now();
+        LocalTime arrivalTimeInput = LocalTime.now();
 
+        // Create a HashSet for days of the week
+        HashSet<String> daysOfWeekInput = new HashSet<>();
+        if (M.isSelected()) daysOfWeekInput.add("M");
+        if (T.isSelected()) daysOfWeekInput.add("T");
+        if (W.isSelected()) daysOfWeekInput.add("W");
+        if (R.isSelected()) daysOfWeekInput.add("R");
+        if (F.isSelected()) daysOfWeekInput.add("F");
+        if (S.isSelected()) daysOfWeekInput.add("S");
+        if (U.isSelected()) daysOfWeekInput.add("U");
+
+        // Create a new ScheduledFlight object
+        ScheduledFlight newFlight = new ScheduledFlight(flightDesignatorInput,
+                departureAirportIdentInput,
+                departureTimeInput,
+                arrivalAirportIdentInput,
+                arrivalTimeInput,
+                daysOfWeekInput);
+
+        // Add the new flight to the database
+        database.addScheduledFlight(newFlight);
+
+        // Save the database after adding a new flight
+        AirlineDatabaseFile.saveDatabase();
+
+        // Refresh the table view
+        refreshFlightTable();
+    }
+
+    @FXML
+    public void handleUpdateFlight(ActionEvent event) {
+        ScheduledFlight selectedFlight = airlineTable.getSelectionModel().getSelectedItem();
+        if (selectedFlight != null) {
+            updateFlightDesignator(selectedFlight);
+            database.updateScheduledFlight(selectedFlight);  // Update the flight in the database
+
+            // Save the database after updating a flight
+            AirlineDatabaseFile.saveDatabase();
+
+            // Refresh the table view
+            refreshFlightTable();
+        } else {
+            showAlert("No Flight Selected", "Please input a flight to update.");
+        }
+    }
+
+    @FXML
+    public void handleDeleteFlight(ActionEvent event) {
+        ScheduledFlight selectedFlight = airlineTable.getSelectionModel().getSelectedItem();
+        if (selectedFlight != null) {
+            database.removeScheduledFlight(selectedFlight);  // Remove the flight from the database
+
+            // Save the database after deleting a flight
+            AirlineDatabaseFile.saveDatabase();
+
+            // Refresh the table view
+            refreshFlightTable();
+        } else {
+            showAlert("No Flight Selected", "Please select a flight to delete.");
+        }
+    }
+
+    private void refreshFlightTable() {
+        showFlightDesignatorTable(database.getScheduledFlights());  // Refresh the table with updated flight list
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
+
