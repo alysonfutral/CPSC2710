@@ -1,5 +1,9 @@
+/*
+Flight Scheduler Project, Module 4
+Alyson Futral
+CPSC2710
+ */
 package edu.au.cpsc.module4;
-
 
 import java.io.Serializable;
 import java.time.LocalTime;

@@ -1,3 +1,8 @@
+/*
+This class allows file access without using resource files/absolute path
+Utilizes get, load, and save methods for file from AirlineDatabaseIO
+ */
+
 package edu.au.cpsc.module4;
 
 import java.io.*;

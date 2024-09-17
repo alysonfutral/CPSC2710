@@ -1,3 +1,7 @@
+/*
+This class provides a space for containing flight information in regards to getting, adding, removing, and updating
+*****See usage in Airline Controller class
+ */
 package edu.au.cpsc.module4;
 
 import java.io.Serializable;
@@ -24,13 +28,11 @@ public class AirlineDatabase implements Serializable {
     }
 
     public void updateScheduledFlight(ScheduledFlight sf) {
-        for (int i = 0; i < flights.size(); i++) {
-            if (flights.get(i).getFlightDesignator().equals(sf.getFlightDesignator())) {
-                flights.set(i, sf); // Replace the old flight with the updated one
-                break;
-            }
+        // update values and set
+        int i = flights.indexOf(sf);
+        if (i != -1) {
+            flights.set(i, sf);
         }
-
     }
 }
 

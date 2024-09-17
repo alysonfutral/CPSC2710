@@ -1,16 +1,18 @@
+/*
+Controller class connects to the scenebuilder using FXML to update, create, and delete flight information
+Run the program and interact with the flight designator UI
+ */
+
 package edu.au.cpsc.module4;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
-
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.List;
@@ -62,22 +64,24 @@ public class AirlineController {
     private AirlineDatabase database;
 
     public void initialize() {
-        // Load the database instead of creating a new one
+        // load the database
         database = AirlineDatabaseFile.getDatabase();
 
+        // bind date to the table columns
         flightDesignatorColumn.setCellValueFactory(new PropertyValueFactory<>("flightDesignator"));
         departureAirportColumn.setCellValueFactory(new PropertyValueFactory<>("departureAirportIdent"));
         arrivalAirportColumn.setCellValueFactory(new PropertyValueFactory<>("arrivalAirportIdent"));
         daysOfWeekColumn.setCellValueFactory(new PropertyValueFactory<>("daysOfWeek"));
 
-        // Load flights into the table
-        refreshFlightTable(); // Updated to reflect loaded data
+        refreshFlightTable(); // show loaded data
 
+        // uses addListener() to respond when a different flight is selected in the TableView:
         airlineTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             showFlightDesignator(newValue);
         });
     }
 
+    // observable list allows for updating of UI TableView or ListView when data changes
     public void showFlightDesignatorTable(List<ScheduledFlight> flightList) {
         ObservableList<ScheduledFlight> observableList = FXCollections.observableList(flightList);
         SortedList<ScheduledFlight> sortedList = new SortedList<>(observableList);
@@ -85,6 +89,7 @@ public class AirlineController {
         sortedList.comparatorProperty().bind(airlineTable.comparatorProperty());
     }
 
+    // used show fd and to clear fields
     public void showFlightDesignator(ScheduledFlight fd) {
         if (fd == null) {
             flightDesignator.clear();
@@ -97,36 +102,54 @@ public class AirlineController {
         arrivalAirportIdent.setText(fd.getArrivalAirportIdent());
     }
 
+    // updates flight designator table
     public void updateFlightDesignator(ScheduledFlight fd) {
+
         fd.setFlightDesignator(flightDesignator.getText());
         fd.setDepartureAirportIdent(departureAirportIdent.getText());
         fd.setArrivalAirportIdent(arrivalAirportIdent.getText());
 
+        // updates days of the week in table when selected
+        HashSet<String> daysOfWeekInput = new HashSet<>();
+        if (M.isSelected())daysOfWeekInput.add("M");
+        if (T.isSelected())daysOfWeekInput.add("T");
+        if (W.isSelected())daysOfWeekInput.add("W");
+        if (R.isSelected())daysOfWeekInput.add("R");
+        if (F.isSelected())daysOfWeekInput.add("F");
+        if (S.isSelected())daysOfWeekInput.add("S");
+        if (U.isSelected())daysOfWeekInput.add("U");
+
+        // update flight
+        database.updateScheduledFlight(fd);
+
+        // save in database
+        AirlineDatabaseFile.saveDatabase();
+
+        refreshFlightTable();
 
     }
 
+    // user inputs data for new flight and updates the table
     @FXML
     public void handleNewFlight(ActionEvent event) {
-        // Get user input from TextFields
+
         String flightDesignatorInput = flightDesignator.getText();
         String departureAirportIdentInput = departureAirportIdent.getText();
         String arrivalAirportIdentInput = arrivalAirportIdent.getText();
 
+        LocalTime departureTimeInput = null;
+        LocalTime arrivalTimeInput = null;
 
-        LocalTime departureTimeInput = LocalTime.now();
-        LocalTime arrivalTimeInput = LocalTime.now();
-
-        // Create a HashSet for days of the week
         HashSet<String> daysOfWeekInput = new HashSet<>();
-        if (M.isSelected()) daysOfWeekInput.add("M");
-        if (T.isSelected()) daysOfWeekInput.add("T");
-        if (W.isSelected()) daysOfWeekInput.add("W");
-        if (R.isSelected()) daysOfWeekInput.add("R");
-        if (F.isSelected()) daysOfWeekInput.add("F");
-        if (S.isSelected()) daysOfWeekInput.add("S");
-        if (U.isSelected()) daysOfWeekInput.add("U");
+        if (M.isSelected())daysOfWeekInput.add("M");
+        if (T.isSelected())daysOfWeekInput.add("T");
+        if (W.isSelected())daysOfWeekInput.add("W");
+        if (R.isSelected())daysOfWeekInput.add("R");
+        if (F.isSelected())daysOfWeekInput.add("F");
+        if (S.isSelected())daysOfWeekInput.add("S");
+        if (U.isSelected())daysOfWeekInput.add("U");
 
-        // Create a new ScheduledFlight object
+        // new ScheduledFlight object
         ScheduledFlight newFlight = new ScheduledFlight(flightDesignatorInput,
                 departureAirportIdentInput,
                 departureTimeInput,
@@ -134,54 +157,54 @@ public class AirlineController {
                 arrivalTimeInput,
                 daysOfWeekInput);
 
-        // Add the new flight to the database
+        // add new flight
         database.addScheduledFlight(newFlight);
 
-        // Save the database after adding a new flight
+        // save in database
         AirlineDatabaseFile.saveDatabase();
 
-        // Refresh the table view
         refreshFlightTable();
     }
 
+    // user inputs data to update flight and updates the table
     @FXML
     public void handleUpdateFlight(ActionEvent event) {
         ScheduledFlight selectedFlight = airlineTable.getSelectionModel().getSelectedItem();
         if (selectedFlight != null) {
             updateFlightDesignator(selectedFlight);
-            database.updateScheduledFlight(selectedFlight);  // Update the flight in the database
+            database.updateScheduledFlight(selectedFlight);
 
-            // Save the database after updating a flight
+            // save the data
             AirlineDatabaseFile.saveDatabase();
 
-            // Refresh the table view
             refreshFlightTable();
         } else {
-            showAlert("No Flight Selected", "Please input a flight to update.");
+            alertUser("No Flight Selected", "Please enter a flight to update.");
         }
     }
 
+    // user can delete data from table when selected
     @FXML
     public void handleDeleteFlight(ActionEvent event) {
         ScheduledFlight selectedFlight = airlineTable.getSelectionModel().getSelectedItem();
         if (selectedFlight != null) {
-            database.removeScheduledFlight(selectedFlight);  // Remove the flight from the database
+            database.removeScheduledFlight(selectedFlight);
 
-            // Save the database after deleting a flight
             AirlineDatabaseFile.saveDatabase();
 
-            // Refresh the table view
             refreshFlightTable();
         } else {
-            showAlert("No Flight Selected", "Please select a flight to delete.");
+            alertUser("No Flight Selected", "Please select a flight to delete.");
         }
     }
 
+    // method to refresh data in table
     private void refreshFlightTable() {
-        showFlightDesignatorTable(database.getScheduledFlights());  // Refresh the table with updated flight list
+        showFlightDesignatorTable(database.getScheduledFlights());
     }
 
-    private void showAlert(String title, String message) {
+    // provide message to user if error occurs after inputting data
+    private void alertUser(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -190,3 +213,11 @@ public class AirlineController {
     }
 }
 
+/*
+Resources:
+https://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableValue.html
+https://stackoverflow.com/questions/42397867/generic-addlistener-in-java
+https://edencoding.com/tableview-customization-cellfactory/
+https://www.tutorialspoint.com/swingexamples/show_alert_message_dialog.html
+https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Alert.html
+ */
