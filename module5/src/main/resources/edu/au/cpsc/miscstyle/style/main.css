@@ -1,0 +1,44 @@
+/*
+add style information to this file to accomplish visual changes from assignment file
+***DO NOT:
+- use Node.setStyle()
+- call Node methods that impact the appearance of controls beyond their layout
+- modify FXML files that impact appearance of layouts or controls beyond basic layout (border,background,color,font, etc.
+- pretty much keep the modifications in this file**
+
+1. Set the background color of the element with CSS ID background to #dad7cd.
+
+2.  Set the fill color of the elements with ids foreground, highlight and accent to #272838, #ff6b6b
+and #7e7f9a respectively.
+
+3.  Create a border around the Rectangle inside a Group inside a VBox.  The border should be 5px
+wide, stroked inside the rectangle's bounds and have a color with RGB components 70, 155,
+75.
+
+4.  Set the fill for the Rectangle in step 3 to a completely transparent color (so you can see through
+it).  Note: you cannot use -fx-opacity here because that will also make the border of the
+Rectangle transparent.
+
+5.  You should now be able to see a Circle behind the Rectangle.  Set its fill color to #7e7f9a. 6.
+There are three Hyperlink objects in the scene.  Two of them (Google and Bing) have been set
+to the "visited" state.  Modify all Hyperlinks to have the following properties:
+    - Text color #ff6b6b and underlined (notice that non-visited Hyperlinks are normally not
+        underlined).
+    - Text color for visited Hyperlinks #272838.
+
+7.  ComboBoxes are an example of elements with substructure.  Look the the JavaFX CSS
+reference's description of this control.  (You might have to look at one of its superclasses to find
+the substructure...just follow the links!). Notice that it has two sub-elements one with CSS class
+arrow-button and one with CSS class arrow.  Change the background color of all arrow
+buttons on all ComboBoxes to #ff6b6b and the background color of all arrows on all
+ComboBoxes to white.  Do not impact elements with CSS class arrow that are not in
+ComboBoxes.  I have placed two labels next to the ComboBox that have these CSS classes
+and these labels should not be impacted by your changes.
+
+8.  CheckBoxes also have substructure.  Study the documentation and change the background of
+the checkmark to #7e7f9a.
+
+9.  There is an HBox (CSS id button-row) containing three buttons.  Modify the alignment of the
+elements in that HBox so that they are centered vertically and right-aligned horizontally.
+
+ */
