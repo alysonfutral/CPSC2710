@@ -1,0 +1,30 @@
+/*
+add style information to this file to accomplish visual changes from assignment file
+***DO NOT:
+- use Node.setStyle()
+- call Node methods that impact the appearance of controls beyond their layout
+- modify FXML files that impact appearance of layouts or controls beyond basic layout (border,background,color,font, etc.
+- pretty much keep the modifications in this file**
+ */
+
+/*
+Rules for this program:
+1. make us of downloaded font
+2. use at least 4 image assets (download from favorite site)
+ */
+
+#airport-button {
+
+}
+
+#seat-reservation-button {
+
+}
+
+#flight-schedule-button {
+
+}
+
+#aircraft-button {
+
+}

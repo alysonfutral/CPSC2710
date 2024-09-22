@@ -16,11 +16,9 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane prefHeight="390.0" prefWidth="517.0" styleClass="background"
-            stylesheets="@main.css"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.au.cpsc.miscstyle.Part1Controller">
+<!--only change sizing and padding if needed-->
+
+<BorderPane id="main-background" prefHeight="390.0" prefWidth="517.0" styleClass="background" stylesheets="@main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.au.cpsc.miscstyle.Part1Controller">
    <bottom>
       <HBox id="button-row" BorderPane.alignment="CENTER">
          <children>
@@ -38,8 +36,8 @@
          <children>
             <Group>
                <children>
-                  <Circle fill="DODGERBLUE" layoutX="215.0" layoutY="24.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="115.0" layoutX="150.0" stroke="BLACK" strokeType="INSIDE" width="137.0" y="-30.0" />
+                  <Circle id="circle-in-rectangle" fill="DODGERBLUE" layoutX="215.0" layoutY="24.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Rectangle id="rectangle-big" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="115.0" layoutX="150.0" stroke="BLACK" strokeType="INSIDE" width="137.0" y="-30.0" />
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -49,15 +47,15 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Hyperlink text="Google" visited="true" />
-                        <Hyperlink text="Duck, Duck, Go" />
-                        <Hyperlink text="Bing" visited="true" />
+                        <Hyperlink id="google-link" text="Google" visited="true" />
+                        <Hyperlink id="duck-link" text="Duck, Duck, Go" />
+                        <Hyperlink id="bing-link" text="Bing" visited="true" />
                      </children>
                   </VBox>
-                  <ComboBox prefWidth="150.0" />
+                  <ComboBox id="combo-box" prefWidth="150.0" />
                   <Label styleClass="arrow-button" text="Label" />
                   <Label styleClass="arrow" text="Label" />
-                  <CheckBox mnemonicParsing="false" selected="true" text="CheckBox" />
+                  <CheckBox id="check-box" mnemonicParsing="false" selected="true" text="CheckBox" />
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -67,7 +65,7 @@
       </VBox>
    </center>
    <top>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane id="three-rectangles" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
@@ -77,9 +75,9 @@
           <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" stroke="BLACK" strokeType="INSIDE" styleClass="foreground" width="50.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" stroke="BLACK" strokeType="INSIDE" styleClass="highlight" width="50.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" stroke="BLACK" strokeType="INSIDE" styleClass="accent" width="50.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Rectangle id="rectangle-left-small" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" stroke="BLACK" strokeType="INSIDE" styleClass="foreground" width="50.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Rectangle id="rectangle-middle-small" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" stroke="BLACK" strokeType="INSIDE" styleClass="highlight" width="50.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Rectangle id="rectangle-right-small" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" stroke="BLACK" strokeType="INSIDE" styleClass="accent" width="50.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </top>

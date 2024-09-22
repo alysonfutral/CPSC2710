@@ -11,7 +11,8 @@ public class LauncherApplication extends Application {
         FXMLLoader fxmlLoader = new
                 FXMLLoader(LauncherApplication.class.getResource("/edu.au.cpsc.launcher.style/launcher-app.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Part 1");
+        scene.getStylesheets().add(getClass().getResource("/edu.au.cpsc.launcher.style/main.css").toExternalForm());
+        stage.setTitle("Part 2");
         stage.setScene(scene);
         stage.show();
     }
