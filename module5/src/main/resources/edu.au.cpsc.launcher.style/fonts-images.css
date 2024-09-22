@@ -1,0 +1,67 @@
+
+@import "https://fonts.googleapis.com/css2?family=Pacifico";
+
+@font-face {
+    font-family: Pacifico;
+    src: url(../edu.au.cpsc.launcher.style/fonts/Pacifico-Regular.ttf);
+}
+
+
+#airport-button {
+    -fx-font-family: "Pacifico";
+    -fx-font-size: 14pt;
+    -fx-background-image: url(../edu.au.cpsc.launcher.style/images/green-airplane.png);
+    -fx-background-size: 160px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left bottom;
+    -fx-background-color: #CCFFE5;
+}
+/*
+buttons not presenting as selected, added psuedocode :pressed to allow "selected" look
+ */
+#airport-button:pressed {
+    -fx-background-color: #99CCA3;
+}
+
+#seat-reservation-button {
+    -fx-font-family: "Pacifico";
+    -fx-font-size: 14pt;
+    -fx-background-image: url(../edu.au.cpsc.launcher.style/images/pink_airplane.png);
+    -fx-background-size: 180px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: #FFCCE5;
+}
+
+#seat-reservation-button:pressed {
+    -fx-background-color: #CC99A3;
+}
+
+#flight-schedule-button {
+    -fx-font-family: "Pacifico";
+    -fx-font-size: 14pt;
+    -fx-background-image: url(../edu.au.cpsc.launcher.style/images/suitcase.png);
+    -fx-background-size: 130px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: top left;
+    -fx-background-color: #FFB266;
+
+}
+
+#flight-schedule-button:pressed {
+    -fx-background-color: #CC8A52;
+}
+
+#aircraft-button {
+    -fx-font-family: "Pacifico";
+    -fx-font-size: 14pt;
+    -fx-background-image: url(../edu.au.cpsc.launcher.style/images/suitcase_extra.png);
+    -fx-background-size: 130px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right bottom;
+    -fx-background-color: #99FFFF;
+
+}
+
+#aircraft-button:pressed {
+    -fx-background-color: #66CCCC;
+}
