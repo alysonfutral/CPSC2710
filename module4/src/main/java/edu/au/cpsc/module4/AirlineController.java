@@ -104,29 +104,29 @@ public class AirlineController {
 
     // updates flight designator table
     public void updateFlightDesignator(ScheduledFlight fd) {
+        if (fd == null) return; // guard against null values
 
         fd.setFlightDesignator(flightDesignator.getText());
         fd.setDepartureAirportIdent(departureAirportIdent.getText());
         fd.setArrivalAirportIdent(arrivalAirportIdent.getText());
 
-        // updates days of the week in table when selected
+        // Update days of the week
         HashSet<String> daysOfWeekInput = new HashSet<>();
-        if (M.isSelected())daysOfWeekInput.add("M");
-        if (T.isSelected())daysOfWeekInput.add("T");
-        if (W.isSelected())daysOfWeekInput.add("W");
-        if (R.isSelected())daysOfWeekInput.add("R");
-        if (F.isSelected())daysOfWeekInput.add("F");
-        if (S.isSelected())daysOfWeekInput.add("S");
-        if (U.isSelected())daysOfWeekInput.add("U");
+        if (M.isSelected()) daysOfWeekInput.add("M");
+        if (T.isSelected()) daysOfWeekInput.add("T");
+        if (W.isSelected()) daysOfWeekInput.add("W");
+        if (R.isSelected()) daysOfWeekInput.add("R");
+        if (F.isSelected()) daysOfWeekInput.add("F");
+        if (S.isSelected()) daysOfWeekInput.add("S");
+        if (U.isSelected()) daysOfWeekInput.add("U");
 
-        // update flight
-        database.updateScheduledFlight(fd);
+        fd.setDaysOfWeek(daysOfWeekInput); // set updated days
 
-        // save in database
+        // Call save function to persist changes
         AirlineDatabaseFile.saveDatabase();
 
+        // Refresh table view to reflect updated data
         refreshFlightTable();
-
     }
 
     // user inputs data for new flight and updates the table
@@ -170,16 +170,15 @@ public class AirlineController {
     @FXML
     public void handleUpdateFlight(ActionEvent event) {
         ScheduledFlight selectedFlight = airlineTable.getSelectionModel().getSelectedItem();
+
         if (selectedFlight != null) {
             updateFlightDesignator(selectedFlight);
-            database.updateScheduledFlight(selectedFlight);
 
-            // save the data
             AirlineDatabaseFile.saveDatabase();
 
             refreshFlightTable();
         } else {
-            alertUser("No Flight Selected", "Please enter a flight to update.");
+            alertUser("No Flight Selected", "Please select a flight to update.");
         }
     }
 

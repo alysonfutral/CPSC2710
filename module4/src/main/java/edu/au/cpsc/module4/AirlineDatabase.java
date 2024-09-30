@@ -28,11 +28,11 @@ public class AirlineDatabase implements Serializable {
     }
 
     public void updateScheduledFlight(ScheduledFlight sf) {
-        // update values and set
-        int i = flights.indexOf(sf);
-        if (i != -1) {
-            flights.set(i, sf);
-        }
+//        // update values and set
+////        int i = flights.indexOf(sf);
+////        if (i != -1) {
+////            flights.set(i, sf);
+//        }
     }
 }
 
