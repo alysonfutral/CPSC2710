@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="relax-anchorpane" prefHeight="500.0" prefWidth="500.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.au.cpsc.module7.StudyController">
+   <children>
+      <Button id="relaxing-video-button" layoutX="100.0" layoutY="144.0" mnemonicParsing="false" onAction="#openRelaxingVideo" prefHeight="100.0" prefWidth="300.0" text="Relaxing Video" />
+      <Button id="relaxing-game-button" layoutX="100.0" layoutY="315.0" mnemonicParsing="false" onAction="#openRelaxingGame" prefHeight="100.0" prefWidth="300.0" text="Relaxing Game" />
+      <Label id="relax-label" layoutX="70.0" layoutY="64.0" text="Choose an option below to relax:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

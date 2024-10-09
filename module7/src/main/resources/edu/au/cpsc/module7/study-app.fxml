@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="main-anchorpane" prefHeight="600.0" prefWidth="650.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.au.cpsc.module7.StudyController">
+    <MenuBar id="menubar" prefHeight="30.0" useSystemMenuBar="true" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Menu Options">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#openFlashCards" text="New Flash Card" />
+                    <MenuItem mnemonicParsing="false" onAction="#openNotes" text="New Note" />
+                    <MenuItem mnemonicParsing="false" onAction="#openContacts" text="New Contact" />
+                    <MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Quit Study Application" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+
+    <HBox layoutX="116.0" layoutY="50.0" spacing="20.0">
+        <children>
+            <Button id="notes-button" mnemonicParsing="false" onAction="#openNotes" prefHeight="150.0" prefWidth="200.0" text="Notes" />
+            <Button id="terms-button" mnemonicParsing="false" onAction="#openFlashCards" prefHeight="150.0" prefWidth="200.0" text="Important Terms" />
+        </children>
+    </HBox>
+
+    <HBox layoutX="116.0" layoutY="232.0" spacing="20.0">
+        <children>
+            <Button id="relax-button" mnemonicParsing="false" onAction="#openRelax" prefHeight="150.0" prefWidth="200.0" text="Relax " />
+            <Button id="contact-button" mnemonicParsing="false" onAction="#openContacts" prefHeight="150.0" prefWidth="200.0" text="Professor/TA Contact" />
+        </children>
+    </HBox>
+
+    <ProgressBar id="progress-bar" fx:id="progressBar" layoutX="137.0" layoutY="515.0" prefHeight="51.0" prefWidth="376.0" progress="0.0" />
+    <Label id="progress-bar-label" layoutX="25.0" layoutY="398.0" prefHeight="35.0" prefWidth="602.0" text="The Progress Bar will reach 100% once all activities have been completed.">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+   <Label id="second-label" layoutX="55.0" layoutY="433.0" prefHeight="75.0" prefWidth="542.0" text="To complete all activities, click on each button above and follow the instructions.">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+</AnchorPane>

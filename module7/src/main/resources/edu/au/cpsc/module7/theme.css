@@ -1,0 +1,152 @@
+#main-anchorpane {
+    -fx-background-image: url("pictures/pink-paper.jpeg");
+    -fx-background-size: 100% 100%;
+
+}
+
+#menubar {
+    -fx-background-color: pink;
+}
+
+#notes-button,
+#terms-button,
+#relax-button,
+#contact-button {
+    -fx-background-color: #de8cb6;
+    -fx-font-family: "Brush Script MT", cursive;
+    -fx-text-fill: #850949;
+    -fx-font-size: 24px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0.0, 0, 1);
+    -fx-padding: 10 20;
+    -fx-border-radius: 20;
+    -fx-border-color: rgba(0, 0, 0, 0.3);
+    -fx-border-width: 1;
+}
+
+#notes-button:hover,
+#terms-button:hover,
+#relax-button:hover,
+#contact-button:hover {
+    -fx-background-color: #c46f8c;
+}
+
+#progress-bar-label,
+#second-label {
+    -fx-font-family: "Brush Script MT";
+    -fx-text-fill: #850949;
+    -fx-font-size: 25px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+}
+
+#progress-bar {
+    -fx-accent: #850949;
+}
+
+#terms-anchorpane {
+    -fx-background-image: url("pictures/pink-paper.jpeg");
+    -fx-background-size: 100% 100%;
+
+}
+
+#terms-label {
+    -fx-font-family: "Brush Script MT";
+    -fx-text-fill: #850949;
+    -fx-font-size: 25px;
+}
+
+#new-term,
+#delete-term {
+    -fx-background-color: #de8cb6;
+    -fx-font-family: "Brush Script MT", cursive;
+    -fx-text-fill: #850949;
+    -fx-font-size: 18px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0.0, 0, 1);
+    -fx-padding: 10 20;
+    -fx-border-radius: 20;
+    -fx-border-color: rgba(0, 0, 0, 0.3);
+    -fx-border-width: 1;
+}
+
+#new-term:hover,
+#delete-term:hover {
+    -fx-background-color: #c46f8c;
+}
+
+#relax-anchorpane {
+    -fx-background-image: url("pictures/pink-paper.jpeg");
+    -fx-background-size: 100% 100%;
+}
+
+#relaxing-video-button,
+#relaxing-game-button,
+#notes-save-note,
+#notes-delete-note,
+#contacts-save-button,
+#contacts-delete-button {
+    -fx-background-color: #de8cb6;
+    -fx-font-family: "Brush Script MT", cursive;
+    -fx-text-fill: #850949;
+    -fx-font-size: 22px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0.0, 0, 1);
+    -fx-padding: 10 20;
+    -fx-border-radius: 20;
+    -fx-border-color: rgba(0, 0, 0, 0.3);
+    -fx-border-width: 1;
+}
+
+#relaxing-video-button:hover,
+#relaxing-game-button:hover,
+#notes-save-note:hover,
+#notes-delete-note:hover,
+#contacts-save-button:hover,
+#contacts-delete-button:hover  {
+    -fx-background-color: #c46f8c;
+}
+
+
+#relax-label {
+    -fx-font-family: "Brush Script MT", cursive;
+    -fx-text-fill: #850949;
+    -fx-font-size: 35px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-background-radius: 20;
+}
+
+#notes-anchorpane {
+    -fx-background-image: url("pictures/pink-paper.jpeg");
+    -fx-background-size: 100% 100%;
+
+}
+
+#notes-top-label,
+#notes-saved,
+#contacts-top-label,
+#contacts-bottom-label {
+    -fx-font-family: "Brush Script MT", cursive;
+    -fx-text-fill: #850949;
+    -fx-font-size: 35px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-background-radius: 20;
+}
+
+#contacts-anchorpane {
+    -fx-background-image: url("pictures/pink-paper.jpeg");
+    -fx-background-size: 100% 100%;
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+
+
+<AnchorPane prefHeight="900.0" prefWidth="1500.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.au.cpsc.module7.StudyController">
+   <children>
+      <WebView fx:id="webView" layoutX="-6.0" layoutY="1.0" prefHeight="903.0" prefWidth="1510.0" />
+   </children>
+</AnchorPane>
